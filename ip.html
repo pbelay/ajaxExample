@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Localizador de IP</title>
+    
+</head>
+<body>
+<section id="contenedor-formulario">
+<p> </p>
+
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+
+
+$(document).ready(function () {
+
+    $.getJSON('http://smart-ip.net/geoip-json?callback=?', function(data) {
+		var enlace = "https://www.google.com/maps?q=";
+		enlace = enlace +data.latitude + ",+" +data.longitude;
+	
+		//Reemplazamos el contenido del parrafo por los datos recuperados de la peticion ajax
+        $('p').html('Direccion IP: ' + data.host+"<br> Pais: "+data.countryName+"<br> Cidade: "+data.city+"<br> Rexion: "+data.region+"<br> Latitude: "+data.latitude+"<br> Lonxitude	: "+data.longitude+"<br> gMaps	: <a href='"+enlace+"'/a> mapa </a>");
+		
+		data.countryCode;
+		data.region;
+		data.latitude;
+		data.longitude;
+		data.timezone;
+    }); 
+});
+</script>
+</body>
+</html>
